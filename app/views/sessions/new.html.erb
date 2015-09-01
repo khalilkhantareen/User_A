@@ -1,0 +1,12 @@
+<body style="background:skyblue">
+<center><br><br><br><br>
+<font size="7":bold  style="color:white">Log in</font>
+<%= form_for(:session,url: login_path) do |f| %>
+ <h2 > <%= f.label :email %><br>
+  <%= f.email_field :email,class: 'form-control' %><br><br><br>
+  <%= f.label :password %><br>
+  <%= f.password_field :password,class: 'form-control' %></h2><br><br><br>
+  <%= f.submit "Log in",class: "btn btn-primary" %>
+<% end %>
+ 
+<h4> New user? <%= link_to "Sign up now!",signup_path %></p>
