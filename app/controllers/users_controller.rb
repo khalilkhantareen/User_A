@@ -18,6 +18,7 @@ before_action :correct_user,only: [:edit,:update]
      else
        render 'new'
      end
+  end
 
    def edit
     @user = User.find(params[:id])
@@ -31,6 +32,7 @@ before_action :correct_user,only: [:edit,:update]
    else
     render 'edit'
    end
+  end
 
   def logged_in_user
    unless logged_in?
@@ -39,11 +41,12 @@ before_action :correct_user,only: [:edit,:update]
     redirect_to login_url
    end
   end
-end
+
  
   private
     def user_params
-      params.require(:user).permit(:name,:email,:password,:password_confirmation)
+      params.require(:user).permit(:name,:email,:password,
+           :password_confirmation)
     end
 
   
@@ -51,6 +54,8 @@ end
   def correct_user
     @user = User.find(params[:id])
     # redirect_to(root_url) unless current_user?(@user)
-  redirect_to(root_url) unless @user == current_user
+  redirect_to(root_url)    unless @user == current_user
   end
-end
+ end
+
+
